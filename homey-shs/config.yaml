@@ -5,7 +5,7 @@ slug: homey-shs
 arch:
   - amd64
   - aarch64
-url: https://github.com/Doekse/homey-assistant
+url: https://github.com/Doekse/addon-homeyshs
 init: false
 privileged:
   - NET_ADMIN

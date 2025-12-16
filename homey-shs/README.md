@@ -1,7 +1,7 @@
 # Home Assistant Community Add-on: Homey Self-Hosted Server
 
 [![GitHub Release][releases-shield]][releases]
-[![License][license-shield]](../LICENSE)
+[![License][license-shield]][../../LICENSE]
 
 ![Supports aarch64 Architecture][aarch64-shield]
 ![Supports amd64 Architecture][amd64-shield]
@@ -63,12 +63,13 @@ SOFTWARE.
 
 [aarch64-shield]: https://img.shields.io/badge/aarch64-yes-green.svg
 [amd64-shield]: https://img.shields.io/badge/amd64-yes-green.svg
-[contributors]: https://github.com/Doekse/homey-assistant/graphs/contributors
-[docs]: https://github.com/Doekse/homey-assistant/blob/main/homey-shs/DOCS.md
+[contributors]: https://github.com/Doekse/addon-homeyshs/graphs/contributors
+[docs]: https://github.com/Doekse/addon-homeyshs/blob/main/homey-shs/DOCS.md
 [doekse]: https://github.com/Doekse
 [forum]: https://community.homey.app
-[issue]: https://github.com/Doekse/homey-assistant/issues
-[license-shield]: https://img.shields.io/github/license/Doekse/homey-assistant.svg
-[releases-shield]: https://img.shields.io/github/release/Doekse/homey-assistant.svg
-[releases]: https://github.com/Doekse/homey-assistant/releases
+[issue]: https://github.com/Doekse/addon-homeyshs/issues
+[license-shield]: https://img.shields.io/github/license/Doekse/addon-homeyshs.svg
+[releases-shield]: https://img.shields.io/github/release/Doekse/addon-homeyshs.svg
+[releases]: https://github.com/Doekse/addon-homeyshs/releases
 [slack]: https://slack.athom.com
+

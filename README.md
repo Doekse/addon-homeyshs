@@ -1,77 +1,76 @@
-# homey-assistant
+# Home Assistant Community Add-on: Homey Self-Hosted Server
+
+[![GitHub Release][releases-shield]][releases]
+[![License][license-shield]](LICENSE)
+
+![Supports aarch64 Architecture][aarch64-shield]
+![Supports amd64 Architecture][amd64-shield]
+
+![Homey Self-Hosted Server screenshot](images/Homey Self-Hosted Server.png)
 
 Run Homey Self-Hosted Server as a Home Assistant add-on.
 
-This add-on allows you to run [Homey Self-Hosted Server](https://homey.app) within your Home Assistant installation, providing a self-hosted alternative to the cloud-based Homey hub.
+## About
 
-## Requirements
+This add-on allows you to run [Homey Self-Hosted Server](https://homey.app) within your Home Assistant OS installation.
 
-- Home Assistant (with Supervisor)
-- Minimum 1 GB available RAM
-- Minimum 1 GB available storage
-- A dedicated LAN IP address for device discovery
+Homey Self-Hosted Server is a software-only product based on the operating system powering [Homey Pro](https://homey.app/homey-pro/).
 
-**Important**: This add-on requires privileged mode and host networking to function properly, as Homey needs direct access to hardware (Z-Wave/ZigBee adapters) and the local network.
+Out of the box, it supports devices that connect over Wi-Fi, Ethernet, Cloud, and Matter. Matter-over-Thread also works if you already have a Thread Border Router in your home. To add Zigbee, Z-Wave, Bluetooth LE, 433 MHz, or Infrared devices, simply connect a [Homey Bridge](https://homey.app/homey-bridge/) to unlock those wireless technologies — no USB sticks required.
 
-## Installation
+[:books: Read the full add-on documentation][docs]
 
-1. Add this repository to your Home Assistant add-on store:
-   - Go to **Settings** → **Add-ons** → **Add-on Store**
-   - Click the three dots (⋮) in the top right corner
-   - Select **Repositories**
-   - Add this repository URL: `https://github.com/Doekse/homey-assistant`
+## Support
 
-2. Install the add-on:
-   - Find **Homey Self-Hosted Server** in the add-on store
-   - Click **Install**
-   - Wait for the installation to complete
+Got questions?
 
-3. Start the add-on:
-   - Click **Start** to launch the Homey Self-Hosted Server
+You have several options to get them answered:
 
-## Configuration
+You can also [open an issue here][issue] on GitHub
+- The Homey [Community Forum][forum] 
+- The Homey [Community Slack][slack]
 
-The add-on uses host networking mode, which means Homey Self-Hosted Server will be accessible on your local network. The server should automatically be discoverable by the Homey mobile app.
+## Authors & contributors
 
-No additional configuration is required by default. The add-on will persist its data automatically.
+The original setup of this repository is by [Doekse][doekse].
 
-## Usage
-
-After starting the add-on:
-
-1. Open the Homey app on your iOS or Android device
-2. Select **Add a new Homey**
-3. Choose **Self-Hosted Server**
-4. Follow the on-screen instructions to complete setup
-
-## Architecture Support
-
-This add-on supports the following architectures:
-- `amd64` (Intel/AMD 64-bit)
-- `arm64` (ARM 64-bit, e.g., Raspberry Pi 4)
-
-## Technical Details
-
-- **Docker Image**: `ghcr.io/athombv/homey-shs:latest`
-- **Network Mode**: Host networking (required for device discovery)
-- **Privileged Mode**: Enabled (required for hardware access)
-- **Data Directory**: `/homey/user` (persisted automatically)
-
-## Troubleshooting
-
-- **Add-on won't start**: Check the logs in the Home Assistant add-on interface for error messages
-- **Homey app can't discover server**: Ensure host networking is enabled and the add-on is running
-- **Permission errors**: Verify that privileged mode is enabled in the add-on configuration
-
-## Documentation
-
-- [Home Assistant Add-on Development](https://developers.home-assistant.io/docs/add-ons)
-- [Homey Self-Hosted Server Installation Guide](https://support.athom.com/en/support/solutions/articles/77000477194)
+For a full list of all authors and contributors,
+check [the contributor's page][contributors].
 
 ## License
 
-MIT License - see [LICENSE](LICENSE) file for details.
+MIT License
 
-## Credits
+Copyright (c) 2025 Doekse
 
-This add-on is maintained by [Doekse](https://github.com/Doekse). Homey Self-Hosted Server is developed by [Athom B.V.](https://homey.app).
+Homey Self-Hosted Server is developed by [Athom B.V.](https://homey.app).
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+[aarch64-shield]: https://img.shields.io/badge/aarch64-yes-green.svg
+[amd64-shield]: https://img.shields.io/badge/amd64-yes-green.svg
+[contributors]: https://github.com/Doekse/addon-homeyshs/graphs/contributors
+[docs]: https://github.com/Doekse/addon-homeyshs/blob/main/homey-shs/DOCS.md
+[doekse]: https://github.com/Doekse
+[forum]: https://community.homey.app
+[issue]: https://github.com/Doekse/addon-homeyshs/issues
+[license-shield]: https://img.shields.io/github/license/Doekse/addon-homeyshs.svg
+[releases-shield]: https://img.shields.io/github/release/Doekse/addon-homeyshs.svg
+[releases]: https://github.com/Doekse/addon-homeyshs/releases
+[slack]: https://slack.athom.com

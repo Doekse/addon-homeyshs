@@ -123,9 +123,9 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 [addon-badge]: https://my.home-assistant.io/badges/supervisor_addon.svg
-[addon]: https://my.home-assistant.io/redirect/supervisor_addon/?addon=homey-shs&repository_url=https%3A%2F%2Fgithub.com%2FDoekse%2Fhomey-assistant
-[contributors]: https://github.com/Doekse/homey-assistant/graphs/contributors
+[addon]: https://my.home-assistant.io/redirect/supervisor_addon/?addon=homey-shs&repository_url=https%3A%2F%2Fgithub.com%2FDoekse%2Faddon-homeyshs
+[contributors]: https://github.com/Doekse/addon-homeyshs/graphs/contributors
 [doekse]: https://github.com/Doekse
 [forum]: https://community.homey.app
-[issue]: https://github.com/Doekse/homey-assistant/issues
+[issue]: https://github.com/Doekse/addon-homeyshs/issues
 [slack]: https://slack.athom.com
