@@ -1,6 +1,6 @@
 name: Homey Self-Hosted Server
 description: Run Homey Self-Hosted Server as a Home Assistant add-on
-version: "0.0.5"
+version: "12.11.1"
 slug: homey-shs
 arch:
   - amd64
@@ -22,4 +22,4 @@ watchdog: http://[HOST]:[PORT:4859]
 ports: {}
 # No directory mappings needed - using /data for persistence
 map: []
-
+image: ghcr.io/athombv/homey-shs:12.11.1
