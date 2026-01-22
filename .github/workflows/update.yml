@@ -1,4 +1,4 @@
-name: Auto-bump Homey SHS add-on
+name: Auto update Homey Self-Hosted Server add-on
 
 on:
   workflow_dispatch:
@@ -145,7 +145,7 @@ jobs:
           tmpfile=$(mktemp)
           {
             # Header block (everything before the first '## [' line)
-            if [ "$HEADER_END" > 0 ] 2>/dev/null; then
+            if [ "$HEADER_END" -gt 0 ]; then
               head -n "$HEADER_END" "$FILE"
             fi
             echo ""
@@ -204,26 +204,33 @@ jobs:
       - name: Create and push git tag
         if: steps.decide.outputs.should_bump == 'true' && env.DRY_RUN == 'false'
         run: |
-          NEW_VERSION="${{ steps.ghcr.outputs.latest_tag }}"
+          VERSION="${{ steps.ghcr.outputs.latest_tag }}"
+          TAG="v${VERSION}"
 
           # Only create tag if it doesn't already exist
-          if git rev-parse "refs/tags/${NEW_VERSION}" >/dev/null 2>&1; then
-            echo "Tag ${NEW_VERSION} already exists, not creating a new one."
+          if git rev-parse "refs/tags/${TAG}" >/dev/null 2>&1; then
+            echo "Tag ${TAG} already exists, skipping."
             exit 0
           fi
 
-          echo "Creating git tag ${NEW_VERSION}..."
-          git tag "${NEW_VERSION}"
-          git push origin "${NEW_VERSION}"
+          echo "Creating git tag ${TAG}..."
+          git tag "${TAG}"
+          git push origin "${TAG}"
 
       - name: Create GitHub Release
         if: steps.decide.outputs.should_bump == 'true' && env.DRY_RUN == 'false'
-        uses: actions/create-release@v1
-        with:
-          tag_name: ${{ steps.ghcr.outputs.latest_tag }}
-          release_name: Homey SHS add-on ${{ steps.ghcr.outputs.latest_tag }}
-          body_path: RELEASE_NOTES.txt
-          draft: false
-          prerelease: false
+        run: |
+          VERSION="${{ steps.ghcr.outputs.latest_tag }}"
+          TAG="v${VERSION}"
+
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            echo "Release ${TAG} already exists, skipping."
+            exit 0
+          fi
+
+          echo "Creating GitHub Release ${TAG}..."
+          gh release create "$TAG" \
+            -t "$TAG" \
+            -F RELEASE_NOTES.txt
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
