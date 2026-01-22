@@ -28,19 +28,35 @@ jobs:
             https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64
           sudo chmod +x /usr/local/bin/yq
 
-      - name: Get latest stable SHS tag from GHCR
+      - name: Get latest stable SHS tag from GitHub HTML
         id: ghcr
         run: |
-          TAGS_JSON=$(curl -s https://ghcr.io/v2/athombv/homey-shs/tags/list)
+          # Fetch the public HTML page that lists tagged versions
+          HTML=$(curl -s 'https://github.com/orgs/athombv/packages/container/homey-shs/versions?filters%5Bversion_type%5D=tagged')
 
-          TAGS=$(echo "$TAGS_JSON" | jq -r '.tags[]' 2>/dev/null || true)
+          # (Optional) Show a bit of it for debugging
+          echo "Snippet of versions page HTML:"
+          echo "$HTML" | head -n 40
 
-          SEMVER_TAGS=$(printf '%s\n' $TAGS | \
-            grep -Ev '^(latest|stable|beta)$' | \
-            grep -E '^[0-9]+\.[0-9]+\.[0-9]+$' || true)
+          # Extract texts that look like pure semver tags from links:
+          #   >12.11.1<  =>  12.11.1
+          TAGS=$(echo "$HTML" \
+            | grep -oE '>[0-9]+\.[0-9]+\.[0-9]+<' \
+            | tr -d '><' \
+            | sort -u)
 
-          LATEST_TAG=$(printf '%s\n' $SEMVER_TAGS | sort -Vr | head -n1)
+          if [ -z "$TAGS" ]; then
+            echo "No semver-looking tags (x.y.z) found in HTML."
+            exit 0
+          fi
 
+          echo "Stable semver tags found:"
+          printf '%s\n' $TAGS
+
+          # Pick the highest semantic version (reverse version sort)
+          LATEST_TAG=$(printf '%s\n' $TAGS | sort -Vr | head -n1)
+
+          echo "Latest stable SHS tag: $LATEST_TAG"
           echo "latest_tag=$LATEST_TAG" >> "$GITHUB_OUTPUT"
 
       - name: Read current add-on version
