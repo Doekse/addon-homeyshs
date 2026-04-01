@@ -1,6 +1,6 @@
 name: Homey Self-Hosted Server
 description: Run Homey Self-Hosted Server as a Home Assistant add-on
-version: "13.0.0"
+version: "13.1.0"
 slug: homey-shs
 arch:
   - amd64
