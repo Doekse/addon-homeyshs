@@ -10,6 +10,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 
 
+
+## [13.1.5] - 2026-05-12
+### Changed
+- Updated Homey Self-Hosted Server base image to version 13.1.5
+- You can check out the Homey Self-Hosted Server changelog here: https://homey.app/en-us/wiki/homey-shs-changelog/
+
 ## [13.1.0] - 2026-04-01
 ### Changed
 - Updated Homey Self-Hosted Server base image to version 13.1.0
